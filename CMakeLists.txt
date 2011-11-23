@@ -15,6 +15,6 @@ endif (${CUDA_FOUND})
 add_library(solve_wsmp solve_wsmp.cpp solve_wsmp.h)
 set(LIBS ${LIBS} solve_wsmp)
 
-add_executable(solve main.cpp mmio.c csr_matrix.h)
+add_executable(solve main.cpp csr_matrix.h)
 
 target_link_libraries(solve ${LIBS})

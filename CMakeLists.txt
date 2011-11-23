@@ -3,8 +3,11 @@ project(solver-playground)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
+
 add_library(solve_wsmp STATIC solve_wsmp.cpp solve_wsmp.h)
-set(LIBS solve_wsmp)
+#target_link_libraries(solve_wsmp)
+set(LIBS solve_wsmp ${CMAKE_CURRENT_SOURCE_DIR}/lib/libwsmp64.a)
 
 find_package(CUDA QUIET)
 if (CUDA_FOUND)
@@ -17,4 +20,4 @@ if (CUDA_FOUND)
 endif (CUDA_FOUND)
 
 add_executable(solve main.cpp csr_matrix.h)
-target_link_libraries(solve ${LIBS})
+target_link_libraries(solve ${LIBS} -lpthread -lgfortran -lblas)

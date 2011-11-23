@@ -12,7 +12,7 @@ using namespace std;
 #include "cusp/print.h"
 #include "cusp/precond/diagonal.h"
 
-void cusp_solve(csr_matrix &matrix, const char *fname) {
+void solve_cusp(csr_matrix &matrix, const char *fname) {
     cusp::csr_matrix<int, float, cusp::host_memory> A;
     cusp::io::read_matrix_market_file(A, fname);
     //cusp::print(dev_A);
